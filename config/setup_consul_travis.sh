@@ -29,3 +29,5 @@ consul_set MONGO_DATABASE 'eventum'
 consul_set LOG_FILE_MAX_SIZE '256'
 consul_set APP_LOG_NAME 'log/app.log'
 consul_set WERKZEUG_LOG_NAME 'log/werkzeug.log'
+
+curl "http://localhost:8500/v1/kv/adi-website/?recurse"
