@@ -37,6 +37,7 @@ config = {
 from consul import Consul
 kv = Consul().kv  # initalize client to KV store
 
+print kv
 # get values from Consul and set the corresponding config variable to the
 # value retrieved from Consul.
 for key, value in config.iteritems():
