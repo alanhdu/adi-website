@@ -43,8 +43,6 @@ for key, value in config.iteritems():
     try:
         string = ("adi-website/{}").format(key)
         _, consul_value = kv.get(string)
-        print "tsest"
-        print consul_value
 
     except requests.ConnectionError:
         raise Exception('Failed to connect to Consul.  You probably need to '
@@ -56,7 +54,7 @@ for key, value in config.iteritems():
         continue
 
     # We can use the default value if it's not None
-    if config[key] is not None:
+    if value is not None:
         continue
 
     # Fail if there is value cannot be found or it is an empty string
