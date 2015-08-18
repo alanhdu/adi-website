@@ -1,7 +1,9 @@
 #!/bin/sh
 
 consul_set() {
-	cat "gothere"
+	echo $1 $2
+	curl -X PUT -d $2 http://localhost:8500/v1/kv/adi-website/$1
+	echo curl http://localhost:8500/v1/kv/?recurse
 }
 
 # Flask configurations
