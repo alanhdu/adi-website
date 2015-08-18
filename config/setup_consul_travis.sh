@@ -1,7 +1,8 @@
 #!/bin/sh
 
 consul_set() {
-	curl -X PUT -d "$2" "http://localhost:8500/v1/kv/adi-website/$1"
+	curl -X PUT -d "$2" http://localhost:8500/v1/kv/adi-website/$1
+	curl http://localhost:8500/v1/kv/adi-website/$1
 }
 
 # Flask configurations
@@ -29,5 +30,3 @@ consul_set MONGO_DATABASE 'eventum'
 consul_set LOG_FILE_MAX_SIZE '256'
 consul_set APP_LOG_NAME 'log/app.log'
 consul_set WERKZEUG_LOG_NAME 'log/werkzeug.log'
-
-curl http://localhost:8500/v1/kv/adi-website/WERKZEUG_LOG_NAME
