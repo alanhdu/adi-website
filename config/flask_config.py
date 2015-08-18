@@ -45,7 +45,7 @@ for key, value in config.iteritems():
         consul_value = kv.get(string+key, None)
         print "tsest"
         print consul_value
-        
+
     except requests.ConnectionError:
         raise Exception('Failed to connect to Consul.  You probably need to '
                         'run: \n\n\t./config/run_consul.sh')
