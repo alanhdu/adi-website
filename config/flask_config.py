@@ -41,8 +41,7 @@ kv = Consul().kv  # initalize client to KV store
 # value retrieved from Consul.
 for key, value in config.iteritems():
     try:
-        string = ("adi-website/{}").format(key)
-        _, consul_value = kv.get(string)
+        _, consul_value = kv.get(("adi-website/{}").format(key))
 
     except requests.ConnectionError:
         raise Exception('Failed to connect to Consul.  You probably need to '
