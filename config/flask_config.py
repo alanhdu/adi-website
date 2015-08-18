@@ -37,7 +37,6 @@ config = {
 from consul import Consul
 kv = Consul().kv  # initalize client to KV store
 
-print kv
 # get values from Consul and set the corresponding config variable to the
 # value retrieved from Consul.
 for key, value in config.iteritems():
@@ -48,6 +47,18 @@ for key, value in config.iteritems():
                         'run: \n\n\t./config/run_consul.sh')
 
     # We have a good value in Consul
+    print "1"
+    print consul_value
+    print "2"
+    print consul_value.get('Value')
+    print "3"
+    print key
+    print "4"
+    print config[key]
+    print "5"
+    print value
+    print "6"
+    
     if consul_value and consul_value.get('Value'):
         config[key] = consul_value.get('Value')
         continue
