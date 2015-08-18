@@ -41,22 +41,16 @@ kv = Consul().kv  # initalize client to KV store
 # value retrieved from Consul.
 for key, value in config.iteritems():
     try:
-        _, consul_value = kv.get("adi-website/{}".format(key.lower()))
+        string = "adi-website/"
+        consul_value = kv.get(string+key, None)
+        print "tsest"
+        print consul_value
+        
     except requests.ConnectionError:
         raise Exception('Failed to connect to Consul.  You probably need to '
                         'run: \n\n\t./config/run_consul.sh')
 
     # We have a good value in Consul
-    print "1"
-    print consul_value
-    print "2"
-    print consul_value.get('Value')
-    print "3"
-    print key
-    print "4"
-    print config[key]
-    print "5"
-    print value
     if consul_value and consul_value.get('Value'):
         config[key] = consul_value.get('Value')
         continue
