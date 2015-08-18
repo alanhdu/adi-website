@@ -1,9 +1,7 @@
 #!/bin/sh
 
 consul_set() {
-	echo $1 $2
 	curl -X PUT -d $2 http://localhost:8500/v1/kv/adi-website/$1
-	curl http://localhost:8500/v1/kv/adi-website/$1
 }
 
 # Flask configurations
