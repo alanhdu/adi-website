@@ -57,7 +57,6 @@ for key, value in config.iteritems():
     print config[key]
     print "5"
     print value
-    print "6"
     if consul_value and consul_value.get('Value'):
         config[key] = consul_value.get('Value')
         continue
