@@ -51,12 +51,12 @@ for key, value in config.iteritems():
                         'run: \n\n\t./config/run_consul.sh')
 
     # We have a good value in Consul
-    if consul_value and consul_value.get('Value'):
-        config[key] = consul_value.get('Value')
+    if consul_value and consul_value[1].get('Value'):
+        config[key] = consul_value[1].get('Value')
         continue
 
     # We can use the default value if it's not None
-    if value is not None:
+    if config[key] is not None:
         continue
 
     # Fail if there is value cannot be found or it is an empty string
