@@ -41,8 +41,8 @@ kv = Consul().kv  # initalize client to KV store
 # value retrieved from Consul.
 for key, value in config.iteritems():
     try:
-        string = "adi-website/"
-        consul_value = kv.get(string+key, None)
+        string = ("adi-website/{}").format(key)
+        _, consul_value = kv.get(string)
         print "tsest"
         print consul_value
 
@@ -51,8 +51,8 @@ for key, value in config.iteritems():
                         'run: \n\n\t./config/run_consul.sh')
 
     # We have a good value in Consul
-    if consul_value and consul_value[1].get('Value'):
-        config[key] = consul_value[1].get('Value')
+    if consul_value and consul_value.get('Value'):
+        config[key] = consul_value.get('Value')
         continue
 
     # We can use the default value if it's not None
